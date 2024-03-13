@@ -1,0 +1,79 @@
+Media Player:
+
+-header
+-footer
+->Landing Page
+    -description+banner image
+    -features
+    -specification+video
+
+->Dashboard
+    -add video
+    -video list
+    -play video
+    -delete video
+    -add category
+    -category list
+    -delete category
+    -add to vategory
+    -play from category
+
+->Watch history
+    -history
+
+==>
+->project created
+->clean up
+->basic css
+->react-bootstrap
+->theme set[bootstrap.min.css]
+->creating pages & components
+->routing for pages:
+    react-router-dom
+    -npm i react-router-dom
+
+
+
+=>Axios:
+----------
+-promise based http client
+-used for asynchronous api calls and more
+-install
+    npm i axios
+
+-usage
+
+    import axios
+
+    axios({
+        method:'post',
+        url:'http://localhost:3000/allVideos',
+        data:{
+            caption:"heeriye",
+            url:"https://www.youtube.com/watch?v=RLzC55ai0eo",
+            image:"https://i.ytimg.com/vi/RLzC55ai0eo/sddefault.jpg?v=655f2f16"
+        },
+        headers:{
+            'Content-Type':'application/json'
+        }
+
+    }).then().catch()
+
+
+
+https://www.youtube.com/watch?v=Zlqf9cuaOBw
+https://www.youtube.com/embed/Zlqf9cuaOBw?si=N-JMDEuvc8TM_kEY
+
+
+https://www.youtube.com/watch?v=LHEU3tE_biU
+https://www.youtube.com/embed/LHEU3tE_biU?si=BraSKIbNCRDl0OHL
+
+
+=>Toastify
+============
+-npm i react-toastify
+-toast,ToastContainer
+
+
+=>State Lifting:
+-concept for sharing data b/w sibling components
