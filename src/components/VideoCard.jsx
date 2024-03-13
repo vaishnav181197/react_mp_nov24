@@ -2,17 +2,17 @@ import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
-import { deleteVideo,addhistory } from '../services/allApis';
+import { deleteVideo, addhistory } from '../services/allApis';
 import { toast } from 'react-toastify';
 
 
-function VideoCard({ video,setDel,cat }) {
+function VideoCard({ video, setDel, cat }) {
     const [show, setShow] = useState(false);
-    const [his,setHis]=useState({
-        caption:video.caption,url:video.url,datetime:''
+    const [his, setHis] = useState({
+        caption: video.caption, url: video.url, datetime: ''
     })
 
-   
+
 
     const handleDelete = async (id) => {
         const res = await deleteVideo(id)
@@ -31,25 +31,30 @@ function VideoCard({ video,setDel,cat }) {
         setShow(false)
     };
     const handleShow = () => {
-        setHis({...his,datetime:new Date()})
+        setHis({ ...his, datetime: new Date() })
         setShow(true)
     };
 
-    const handleDrag=(e,id)=>{
-        console.log("Video ID:"+id)
-        e.dataTransfer.setData("videoId",id)
+    const handleDrag = (e, id) => {
+        console.log("Video ID:" + id)
+        e.dataTransfer.setData("videoId", id)
     }
     return (
         <>
-            <Card style={cat?{ width: '12rem' }:{ width: '18rem' }} className='ms-5 mt-3' draggable onDragStart={(e)=>{handleDrag(e,video?.id)}} >
+            <Card style={cat ? { width: '12rem' } : { width: '18rem' }} className='ms-5 mt-3' draggable onDragStart={(e) => { handleDrag(e, video?.id) }} >
                 <Card.Img variant="top" onClick={handleShow} src={video.image} />
                 <Card.Body>
                     <Card.Title>
                         {video.caption}
-                        <Button className='btn float-end' onClick={() => { handleDelete(video.id) }}>
-                            <i className="fa-solid fa-trash" style={{ color: "#f60404" }}></i>
+                        {
+                            !cat &&
+                            <Button className='btn float-end' onClick={() => { handleDelete(video.id) }}>
 
-                        </Button>
+                                <i className="fa-solid fa-trash" style={{ color: "#f60404" }}></i>
+
+                            </Button>
+                        }
+
                     </Card.Title>
                 </Card.Body>
             </Card >
